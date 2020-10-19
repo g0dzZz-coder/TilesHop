@@ -1,11 +1,11 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
+[RequireComponent(typeof(Renderer))]
+[RequireComponent(typeof(Rigidbody))]
 public class Tile : MonoBehaviour
 {
     [SerializeField] Material[] materials = null;
-    [SerializeField] Material[] lerpMaterials = null;
-    [SerializeField] Material transparentMaterial = null;
     [SerializeField] float durationAnim = 0.33f;
 
     private new Rigidbody rigidbody = null;
@@ -33,10 +33,11 @@ public class Tile : MonoBehaviour
 
     private void Start()
     {
-        renderer.sharedMaterial = materials[Random.Range(0, materials.Length)];
+        renderer.material = materials[Random.Range(0, materials.Length)];
+        renderer.material.DOFade(1.0f, durationAnim);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (isActive)
             rigidbody.velocity = new Vector3(0, 0, -speed);
@@ -44,13 +45,9 @@ public class Tile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<Ball>())
-            //renderer.material
-            renderer.material.Lerp(renderer.sharedMaterial, transparentMaterial, durationAnim);
+        if (isActive && collision.gameObject.GetComponent<Ball>())
+            renderer.material.DOFade(0.0f, durationAnim);
     }
 
-    private void Delete()
-    {
-        Destroy(gameObject);
-    }
+    private void Delete() => Destroy(gameObject);
 }

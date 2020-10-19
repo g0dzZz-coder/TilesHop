@@ -3,19 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    [SerializeField]
-    private Animator animator = null;
+    [SerializeField] Animator animator = null;
 
-    private int sceneToLoad = 0;
+    private int _sceneToLoad = 0;
 
     public void FadeToLevel(int newScene)
     {
-        sceneToLoad = newScene;
+        _sceneToLoad = newScene;
         animator.SetTrigger("FadeOut");
     }
 
     public void OnFadeComplete()
     {
-        SceneManager.LoadSceneAsync(sceneToLoad);
+        SceneManager.LoadSceneAsync(_sceneToLoad);
     }
 }

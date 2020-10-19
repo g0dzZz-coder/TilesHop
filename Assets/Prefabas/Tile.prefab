@@ -48,11 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materials:
-  - {fileID: 2100000, guid: 30aebd91f1e6f9b4f9472e4391926d24, type: 2}
-  lerpMaterials:
-  - {fileID: 2100000, guid: 2a593cd14ee31bf43984ed8677d12ee4, type: 2}
-  - {fileID: 2100000, guid: 17c87074359490b47beea0f5be41fd81, type: 2}
-  - {fileID: 2100000, guid: 6b1ddf1d61e57d14189e1b28ce6ff49d, type: 2}
+  - {fileID: 2100000, guid: 15ec357eb4e910442a28593dbf27a9d8, type: 2}
   transparentMaterial: {fileID: 2100000, guid: b75efe188ddaa364797e2d316500301b, type: 2}
   durationAnim: 0.33
 --- !u!33 &1167700558590176641
@@ -82,7 +78,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 30aebd91f1e6f9b4f9472e4391926d24, type: 2}
+  - {fileID: 2100000, guid: 15ec357eb4e910442a28593dbf27a9d8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

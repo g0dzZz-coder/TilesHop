@@ -1,7 +1,6 @@
-﻿using TMPro;
+﻿using DG.Tweening;
+using TMPro;
 using UnityEngine;
-using DG.Tweening;
-using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,12 +10,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] SceneChanger sceneChanger = null;
     [SerializeField] float durationAnim = 0.33f;
 
-    private GameManager gameMgr;
-
-    public void Init(GameManager gameMgr)
+    public void Init()
     {
-        this.gameMgr = gameMgr;
-
         ShowElement(scoreText.GetComponent<CanvasGroup>());
     }
 

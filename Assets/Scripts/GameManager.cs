@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        UIMgr.Init(this);
+        UIMgr.Init();
 
         IsGameStarted = false;
         Score = 0;
@@ -33,16 +33,6 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
             StartGame();
-    }
-
-    public void StartGame()
-    {
-        IsGameStarted = true;
-
-        Ball.Init(this);
-        TileMgr.Init(this);
-
-        Debug.Log("Game Started");
     }
 
     public void RestartGame()
@@ -62,5 +52,13 @@ public class GameManager : MonoBehaviour
         IsGameStarted = false;
 
         UIMgr.ShowEndGamePanel();
+    }
+    
+    private void StartGame()
+    {
+        IsGameStarted = true;
+
+        Ball.Init(this);
+        TileMgr.Init();
     }
 }

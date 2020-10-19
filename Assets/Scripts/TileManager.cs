@@ -11,18 +11,9 @@ public class TileManager : MonoBehaviour
 
     [SerializeField] int xRange = 3;
 
-    private GameManager gameMgr;
-
-    public void Init(GameManager gameMgr)
+    public void Init()
     {
-        this.gameMgr = gameMgr;
-
         InitStartTiles();
-        StartCoroutine(Spawner());
-    }
-
-    public void StartSpawn()
-    {
         StartCoroutine(Spawner());
     }
 

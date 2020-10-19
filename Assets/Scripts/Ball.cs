@@ -1,6 +1,8 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
+[RequireComponent(typeof(Renderer))]
+[RequireComponent(typeof(Rigidbody))]
 public class Ball : MonoBehaviour
 {
     [SerializeField] float force = 5.0f;
@@ -8,7 +10,7 @@ public class Ball : MonoBehaviour
 
     private new Rigidbody rigidbody;
     private new Renderer renderer;
-    private bool isInitialized = false;
+    private bool _isInitialized = false;
 
     private GameManager gameMgr;
 
@@ -20,7 +22,7 @@ public class Ball : MonoBehaviour
         //rigidbody.velocity = Vector3.up * force * Time.deltaTime;
         rigidbody.velocity = new Vector3(0, force, 0);
 
-        isInitialized = true;
+        _isInitialized = true;
     }
 
     private void Awake()
@@ -37,13 +39,13 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        if (isInitialized && gameMgr.IsGameStarted)
+        if (_isInitialized && gameMgr.IsGameStarted)
             Move();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (isInitialized && gameMgr.IsGameStarted)
+        if (_isInitialized && gameMgr.IsGameStarted)
         {
             if (collision.gameObject.GetComponent<Tile>())
             {
@@ -62,7 +64,7 @@ public class Ball : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            float inputValue = Input.GetAxis("Mouse X");
+            var inputValue = Input.GetAxis("Mouse X");
             if (inputValue > 0)
             {
                 // Mouse moved left.
@@ -80,7 +82,7 @@ public class Ball : MonoBehaviour
     {
         // Get the gravity value.
         var magnitude = Physics.gravity.magnitude;
-        // Calculete the vertical speed;
+        // Calculate the vertical speed.
         var speed = Mathf.Sqrt(2 * force * magnitude);
         // Jump.
         rigidbody.velocity = new Vector3(0, speed * 0.5f, 0);
